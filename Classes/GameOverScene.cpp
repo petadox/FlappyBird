@@ -1,15 +1,15 @@
-#include "HelloWorldScene.h"
+#include "GameOverScene.h"
 #include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
-Scene* HelloWorld::createScene()
+Scene* GameOverScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     
     // 'layer' is an autorelease object
-    auto layer = HelloWorld::create();
+    auto layer = GameOverScene::create();
 
     // add layer as a child to scene
     scene->addChild(layer);
@@ -19,7 +19,7 @@ Scene* HelloWorld::createScene()
 }
 
 // on "init" you need to initialize your instance
-bool HelloWorld::init()
+bool GameOverScene::init()
 {
     //////////////////////////////
     // 1. super init first
