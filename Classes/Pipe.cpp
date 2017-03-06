@@ -17,7 +17,7 @@ void Pipe::SpawnPipe( cocos2d::Layer *layer)
     auto bottomPipe = Sprite::create("/home/chus/Juego/Juego/Resources/iphone/Pipe.png");
 
     auto topPipeBody = PhysicsBody::createBox( topPipe->getContentSize() );
-    auto bottomPipeBody = PhysicsBody::createBox( topPipe->getContentSize() );
+    auto bottomPipeBody = PhysicsBody::createBox( bottomPipe->getContentSize() );
 
     auto random = CCRANDOM_0_1();
 
@@ -51,5 +51,21 @@ void Pipe::SpawnPipe( cocos2d::Layer *layer)
     auto bottomPipeAction = MoveBy::create( PIPE_MOVEMENT_SPEED * visibleSize.width, Point( -visibleSize.width * 1.5, 0) );
 
     topPipe->runAction( topPipeAction );
-    bottomPipe->runAction( topPipeAction );
+    bottomPipe->runAction( bottomPipeAction );
+
+    auto pointNode = Node::create();
+    auto pointBody = PhysicsBody::createBox( Size( 1, Sprite::create( "/home/chus/Juego/Juego/Resources/iphone/Ball.png" )->getContentSize().height * PIPE_GAP) );
+
+    pointBody->setDynamic( false );
+    pointBody->setCollisionBitmask( POINT_COLLISION_BITMASK );
+    pointBody->setContactTestBitmask( true );
+
+    pointNode->setPhysicsBody( pointBody );
+    pointNode->setPosition( Point( topPipe->getPositionX(), topPipe->getPositionY() - (topPipe->getContentSize().height / 2 ) - ( ( Sprite::create( "/home/chus/Juego/Juego/Resources/iphone/Ball.png")->getContentSize().height * PIPE_GAP ) / 2 ) ) );
+
+    layer->addChild( pointNode );
+
+    auto pointNodeAction = MoveBy::create( PIPE_MOVEMENT_SPEED * visibleSize.width, Point ( -visibleSize.width * 1.5, 0 ) );
+
+    pointNode->runAction ( pointNodeAction );
 }

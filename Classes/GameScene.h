@@ -11,7 +11,7 @@ public:
     static cocos2d::Scene* createScene();
 
     virtual bool init();
-    
+
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
     
@@ -25,7 +25,7 @@ private:
 
     bool onContactBegin( cocos2d::PhysicsContact &contact );
 
-    bool onTouchbegan( cocos2d::Touch *touch, cocos2d::Event *event);
+    bool onTouchBegan( cocos2d::Touch *touch, cocos2d::Event *event);
 
     void StopFlying( float dt );
     void update( float dt );
@@ -35,6 +35,10 @@ private:
     Pipe pipe;
 
     Bird *bird;
+
+    unsigned int score;
+
+    cocos2d::Label *scoreLabel;
 };
 
 #endif // __GAME_SCENE_H__

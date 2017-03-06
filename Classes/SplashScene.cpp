@@ -1,6 +1,7 @@
 #include "SplashScene.h"
 #include "MainMenuScene.h"
 #include "Definitions.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -28,6 +29,10 @@ bool SplashScene::init()
     {
         return false;
     }
+
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect( "/home/chus/Juego/Juego/Resources/Sounds/Hit.mp3");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect( "/home/chus/Juego/Juego/Resources/Sounds/Point.mp3");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect( "/home/chus/Juego/Juego/Resources/Sounds/Wing.mp3");
     
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();

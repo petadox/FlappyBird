@@ -2,15 +2,16 @@
 #define __BIRD_H__
 
 #include "cocos2d.h"
+#include "SimpleAudioEngine.h"
 
 class Bird
 {
 public:
     Bird( cocos2d::Layer *layer);
 
-    void Fall ();
-    void Fly () { isFalling = false; };
-    void StopFlying() { isFalling = true; };
+    void Fall( );
+    void Fly( ) { CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("/home/chus/Juego/Juego/Resources/Sounds/Wing.mp3");  isFalling = false; };
+    void StopFlying() { isFalling = true; }
 
 private:
     cocos2d::Size visibleSize;
